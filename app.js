@@ -8,7 +8,8 @@ const cartOverlay = document.querySelector(".cart-overlay");
 const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
-const cartProducts = document.querySelector(".products-center");
+const productsDOM = document.querySelector
+(".products-center");
 
 let cart = [];
 
@@ -18,7 +19,7 @@ class Products{
         try {
             let result = await fetch('products.json');
             let data = await result.json();
-            let products = data.items:
+            let products = data.items;
             products = products.map(item =>{
                 const {title,price} = item.fields;
                 const {id} = item.sys;
@@ -39,6 +40,7 @@ class UI {
         let result = "";
         products.forEach(product => {
             result += `
+            <!-- single product -->
             <article class="product">
           <div class="img-container">
             <img
@@ -54,8 +56,10 @@ class UI {
           <h3>${product.title}</h3>
           <h4>$${product.price}</h4>
         </article>
-            `
+        <!--end of single product -->
+            `;
         })
+        productsDOM.innerHTML = result;
 
     }
 }
