@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Cart</title>
     <!-- font awesome -->
-    <script src="https://kit.fontawesome.com/2f81b2f10f.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/2f81b2f10f.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- Css -->
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -28,30 +31,64 @@
     <!--End Nav-->
     <!--Hero-->
     <header class="hero">
-        <div class="banner">
-            <h1 class="banner-title">Furniture Collection</h1>
-            <button class="banner-btn">Shop Now</button> 
-        </div>
+      <div class="banner">
+        <h1 class="banner-title">Furniture Collection</h1>
+        <button class="banner-btn">Shop Now</button>
+      </div>
     </header>
     <!--Products-->
     <section class="products">
-        <div class="section-title">
-            <h2>Our Products</h2>
-        </div>
-        <div class="products-center">
-            <article class="product">
-                <div class="img-container">
-                    <img src="./images/product-1.jpeg" alt="product" class="product-img">
-                    <button class="bag-btn" data-id="1">
-                        <i class="fas fa-shopping-cart"></i>
-                        Add To Bag
-                    </button>
-                </div>
-                <h3>Queen Bed</h3>
-                <h4>$16</h4>
-            </article>
-        </div>
+      <div class="section-title">
+        <h2>Our Products</h2>
+      </div>
+      <div class="products-center">
+        <article class="product">
+          <div class="img-container">
+            <img
+              src="./images/product-1.jpeg"
+              alt="product"
+              class="product-img"
+            />
+            <button class="bag-btn" data-id="1">
+              <i class="fas fa-shopping-cart"></i>
+              Add To Bag
+            </button>
+          </div>
+          <h3>Queen Bed</h3>
+          <h4>$16</h4>
+        </article>
+      </div>
     </section>
+    <!--Cart-->
+    <div class="cart-overlay">
+      <div class="cart">
+        <span class="close-cart">
+          <i class="fas fa-window-close"></i>
+        </span>
+        <h2>Your Cart</h2>
+        <div class="cart-content">
+          <!--Cart Item-->
+          <div class="cart-item">
+            <img src="./images/product-1.jpeg" alt="product" />
+            <div>
+              <h4>queen bed</h4>
+              <h5>$9.00</h5>
+              <span class="remove-item">Remove</span>
+            </div>
+            <div>
+              <i class="fas fa-chevron-up"></i>
+              <p class="item-amount">1</p>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+          <!--End Cart Item-->
+        </div>
+        <div class="cart-footer">
+          <h3>Your Total : $ <span class="cart-total">0</span></h3>
+          <button class="clear-cart banner-btn">Clear Cart</button>
+        </div>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>
