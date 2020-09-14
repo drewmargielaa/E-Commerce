@@ -1,5 +1,4 @@
 //variables
-
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
 const clearCartBtn = document.querySelector(".clear-clart");
@@ -11,6 +10,7 @@ const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector
 (".products-center");
 
+
 let cart = [];
 
 // getting the producs
@@ -21,10 +21,10 @@ class Products{
             let data = await result.json();
             let products = data.items;
             products = products.map(item =>{
-                const {title,price} = item.fields;
-                const {id} = item.sys;
+                const { title,price } = item.fields;
+                const { id } = item.sys;
                 const image = item.fields.image.fields.file.url;
-                return {title,price,id,image}   
+                return { title,price,id,image }    
             })
             return products
         } catch (error) {
@@ -60,13 +60,39 @@ class UI {
             `;
         })
         productsDOM.innerHTML = result;
-
+    }
+    getBagButtons() {
+        const buttons = [...document.querySelectorAll('.bag-btn')
+    ];
+    buttons.forEach(button =>{
+        let id = button.dataset.id;
+        let inCart = cart.find(item => item.id === id);
+        if(inCart) {
+            button.innerText = "In Cart";
+            button.disabled = true
+        }
+        else {
+            button.addEventListener('click', event =>{
+                event.target.innerText = "In Cart";
+                event.target.disabled = true;
+                // get product from products 
+                // add product to the cart
+                //save cart in local storage
+                //set cart values
+                // add cart item
+                 
+            })
+        }
+    });
     }
 }
 
 //local storage
 class storage{
-
+    static saveProducts(products){
+        localStorage.setItem("products",JSON.stringify(products)
+        );
+    }
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -74,5 +100,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const products = new Products();
 
     //get all products
-    products.getProducts().then(products => ui.displayProducts(products));
+    products.getProducts().then(products => {
+        ui.displayProducts(products);
+        Storage.saveProducts(products);
+    }).then(()=>{
+        ui.getBagButtons();
+    });
 });
